@@ -3,15 +3,10 @@
  * */
 const proxyMap = {
   dev: {
-    baseURL: "http://mcp.dev.internal.hsmob.com",
-    rap: "http://rap.internal.weimob.com/mockjsdata/338"
+    baseURL: "http://172.18.33.25:3000/api"
   },
-  qa: {
-    baseURL: "http://10.11.128.253:8080"
-  },
-  prod: {
-    baseURL: "http://mcp.hsmob.com"
-  }
+  qa: {},
+  prod: {}
 };
 
 /**
@@ -20,22 +15,23 @@ const proxyMap = {
 const hostConfig = [
   {
     env: "dev",
-    hostList: ["mcp.dev.internal.hsmob.com"]
+    hostList: [""]
   },
   {
     env: "qa",
-    hostList: ["10.11.128.64:8099"]
+    hostList: [""]
   },
   {
     env: "prod",
-    hostList: ["mcp.hsmob.com"]
+    hostList: [""]
   }
 ];
 /**
  * 环境判断
  */
-let env = hostConfig.find(
-  item => item.hostList.includes(window.location.host) || { env: "dev" }
+let env = (
+  hostConfig.find(item => item.hostList.includes(window.location.host)) || {
+    env: "dev"
+  }
 ).env;
-
 export default proxyMap[env];

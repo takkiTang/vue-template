@@ -1,8 +1,10 @@
-/** 
- * api接口的统一出口
- */
-import user from '@/api/user';
+// 自动引入 module 下的js文件
+const apiContext = require.context("@/api/modules", true, /\.js$/);
 
-export default {
-  user,
-}
+const apis = apiContext.keys().reduce((prev, next) => {
+  const _key = next.match(/(\w+)\.js/)[1];
+  prev[_key] = apiContext(next).default || apiContext(next);
+  return prev;
+}, {});
+
+export default apis;
