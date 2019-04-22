@@ -1,5 +1,5 @@
 <template>
-  <section class="wrapper">
+  <section class="wrapper h-full">
     <el-breadcrumb>
       <el-breadcrumb-item v-for="item in levelList" :key="item.path">{{
         item.meta.title
@@ -24,6 +24,8 @@ export default {
 .wrapper {
   display: flex;
   align-items: center;
-  padding-left: 10px;
+}
+.h-full {
+  height: 100%;
 }
 </style>

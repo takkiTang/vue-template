@@ -1,11 +1,17 @@
 <template>
-  <section class="app-wrapper">
-    <Sidebar class="sidebar-wrapper"></Sidebar>
-    <section class="layout">
-      <Navbar class="nav-wrapper"></Navbar>
-      <AppMain class="main-wrapper"></AppMain>
-    </section>
-  </section>
+  <el-container class="h-100vh">
+    <el-aside width="200px">
+      <Sidebar></Sidebar>
+    </el-aside>
+    <el-container>
+      <el-header class="b-b">
+        <Navbar></Navbar>
+      </el-header>
+      <el-main>
+        <AppMain></AppMain>
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
@@ -21,37 +27,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$--nav-height: 60px;
-$--sidebar-width: 216px;
-$--sidebar-width-collapse: 60px;
-.app-wrapper {
+.h-100vh {
   height: 100vh;
-  .sidebar-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    overflow-y: auto;
-    width: $--sidebar-width;
-    transition: width 0.28s;
-  }
-  .layout {
-    height: 100vh;
-    margin-left: $--sidebar-width;
-    .nav-wrapper {
-      position: fixed;
-      height: $--nav-height;
-      right: 0;
-      left: $--sidebar-width;
-      background: $--bg-white;
-      z-index: 999;
-    }
-    .main-wrapper {
-      flex: 1;
-      height: 100%;
-      padding-top: $--nav-height;
-      background: $--bg-gray;
-    }
-  }
+}
+.b-b {
+  border-bottom: 1px solid $--border-color;
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
-  <section>
+  <section class="h-full">
     <div class="top">
-      <img width="124" height="26" src="@/assets/logo.png" />
+      <img width="124" height="26" src="@/assets/logo.svg" />
     </div>
-    <el-menu router :default-active="$route.path" class="b-t">
+    <el-menu router :default-active="$route.path" class="b-t menu">
       <div v-for="(item, index) in sidebar_routers" :key="index">
         <el-menu-item v-if="!item.children" :index="item.path">
           {{ item.title }}
@@ -40,15 +40,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$--nav-height: 60px;
 .top {
-  height: 60px;
+  height: $--nav-height;
   padding: 16px 0;
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
   border-right: 1px solid $--border-color;
 }
-.b-t {
-  border-top: 1px solid $--border-color;
+.menu {
+  height: calc(100% - #{$--nav-height});
+}
+.h-full {
+  height: 100%;
 }
 </style>
